@@ -1,0 +1,32 @@
+{
+    "name": "@types/react-native-easy-gestures",
+    "version": "1.0.0",
+    "keywords": [
+        "react-native-easy-gestures",
+        "typescript"
+    ],
+    "author": "",
+    "description": "TypeScript definitions for @types/react-native-easy-gestures",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Andrey",
+            "url": "https://github.com/keske",
+            "githubUsername": "keske"
+        },
+        {
+            "name": "Bambang Adhitya",
+            "url": "https://github.com/aprakoso98",
+            "githubUsername": "aprakoso98"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aprakoso98/Typed.git",
+        "directory": "react-native-easy-gestures"
+    },
+    "scripts": {},
+    "dependencies": {}
+}
