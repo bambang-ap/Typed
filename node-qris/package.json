@@ -1,18 +1,18 @@
 {
-    "name": "@types/react-native-easy-gestures",
+    "name": "@types/node-qris",
     "version": "1.0.0",
     "keywords": [
-        "react-native-easy-gestures",
+        "node-qris",
         "typescript"
     ],
     "author": "aprakoso98",
-    "description": "TypeScript definitions for @types/react-native-easy-gestures",
+    "description": "TypeScript definitions for @types/node-qris",
     "license": "MIT",
     "contributors": [
         {
-            "name": "Andrey",
-            "url": "https://github.com/keske",
-            "githubUsername": "keske"
+            "name": "Aji Prakoso",
+            "url": "https://gitlab.com/jipraks",
+            "gitlabUsername": "jipraks"
         },
         {
             "name": "Bambang Adhitya",
@@ -25,7 +25,7 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/aprakoso98/Typed.git",
-        "directory": "react-native-easy-gestures"
+        "directory": "node-qris"
     },
     "scripts": {},
     "dependencies": {}
