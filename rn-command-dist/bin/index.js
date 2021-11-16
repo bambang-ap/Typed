@@ -29,6 +29,7 @@ var installApp_1 = require("../src/installApp");
 var moveApp_1 = require("../src/moveApp");
 var buildRun_1 = require("../src/buildRun");
 var init_1 = require("../src/init");
+var emulator_1 = require("../src/emulator");
 var _a = __read(process.argv), _command = _a[2], params = _a.slice(3);
 var command = _command;
 var defaultCommandLog = "No command '" + (command !== null && command !== void 0 ? command : '') + "' found\n\nAvailable commands: \n\nclean\n\t--platform, -p\t\t: ios | android\nconnect\n\t--target, -t\t\t: i.e. wlan0\nenv\nmove\n\t--filename, -f\t\t: i.e. new-app.apk\ninstall\n\tnot maintained\ngradle-update\n\t--type, -t\t\t: dev | prod\nincrement-version\n\t--type, -t\t\t: dev | prod\n\t--platform, -p\t\t: ios | android\n\t[configkey]\t: x | + | 0-9\n\t\te.g. VERSION_NAME: x.x.+";
@@ -79,8 +80,9 @@ function prettyConsole() {
 exports.prettyConsole = prettyConsole;
 function thread(command) {
     return new Promise(function (resolve) {
+        console.log(colorize('BgGreen'), command);
         console.log(colorize('FgCyan'), "=== Child process started command `" + command + "` ===");
-        var execCommand = child_process_1.spawn(command, [], { shell: true, stdio: 'inherit' });
+        var execCommand = (0, child_process_1.spawn)(command, [], { shell: true, stdio: 'inherit' });
         execCommand.on('error', resolve);
         execCommand.on('close', function () { return resolve(true); });
     });
@@ -89,25 +91,27 @@ exports.thread = thread;
 function execCommand() {
     return new Promise(function (resolve) {
         if (command === 'clean')
-            cleanProject_1["default"]();
+            (0, cleanProject_1["default"])();
         else if (command === 'connect')
-            connectDevice_1["default"]();
+            (0, connectDevice_1["default"])();
+        else if (command === 'emu')
+            (0, emulator_1["default"])();
         else if (command === 'env')
-            envManager_1["default"]();
+            (0, envManager_1["default"])();
         else if (command === 'move')
-            moveApp_1["default"]();
+            (0, moveApp_1["default"])();
         else if (command === 'install')
-            installApp_1["default"]();
+            (0, installApp_1["default"])();
         else if (command === 'gradle-update')
-            gradleUpdate_1["default"]();
+            (0, gradleUpdate_1["default"])();
         else if (command === 'increment-version')
-            incrementVersion_1["default"]();
+            (0, incrementVersion_1["default"])();
         else if (command === 'build')
-            buildRun_1["default"](true);
+            (0, buildRun_1["default"])(true);
         else if (command === 'run')
-            buildRun_1["default"]();
+            (0, buildRun_1["default"])();
         else if (command === 'init')
-            init_1["default"]();
+            (0, init_1["default"])();
         else
             resolve(defaultCommandLog);
     });

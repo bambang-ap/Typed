@@ -39,42 +39,28 @@ exports.__esModule = true;
 var inquirer = require("inquirer");
 var child_process_1 = require("child_process");
 var bin_1 = require("../bin");
-var outputFolder = "outputs";
-function installApp() {
+function runEmulator() {
     return __awaiter(this, void 0, void 0, function () {
-        var deviceLists, fileLists, selectedDevice, choices, selectedApk;
+        var listAvds, selectedAvd;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    deviceLists = (0, child_process_1.execSync)('adb devices').toString().split('\n')
-                        .reduce(function (ret, list) {
-                        var index = list.indexOf('\t');
-                        if (index > 0)
-                            ret.push(list.slice(0, index));
-                        return ret;
-                    }, []);
-                    fileLists = (0, child_process_1.execSync)("ls " + outputFolder).toString();
+                    listAvds = (0, child_process_1.execSync)('emulator -list-avds')
+                        .toString()
+                        .split('\n')
+                        .filter(function (avd) { return avd !== ''; });
                     return [4 /*yield*/, inquirer.prompt([{
                                 type: "list",
-                                name: "selectedDevice",
-                                message: "Select device you want to set as target install",
-                                choices: deviceLists
+                                name: "selectedAvd",
+                                message: "Select avd you want to run",
+                                choices: listAvds
                             }])];
                 case 1:
-                    selectedDevice = (_a.sent()).selectedDevice;
-                    choices = fileLists.split('\n').filter(function (l) { return l !== ''; });
-                    return [4 /*yield*/, inquirer.prompt([{
-                                type: "list",
-                                name: "selectedApk",
-                                message: "Select apk you want to install",
-                                choices: choices
-                            }])];
-                case 2:
-                    selectedApk = (_a.sent()).selectedApk;
-                    (0, bin_1.thread)("adb -s " + selectedDevice + " install \"" + bin_1.ROOT_PATH + "/" + outputFolder + "/" + selectedApk + "\"");
+                    selectedAvd = (_a.sent()).selectedAvd;
+                    (0, bin_1.thread)("cd $ANDROID_HOME/emulator; ./emulator @" + selectedAvd);
                     return [2 /*return*/];
             }
         });
     });
 }
-exports["default"] = installApp;
+exports["default"] = runEmulator;

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/// <reference path="../../../rn-command/global.d.ts" />
+/// <reference path="../../../react-native-command/global.d.ts" />
 export declare const theParams: {};
 export declare const ROOT_PATH: string;
 export declare const THE_COMMAND = "r-native";
