@@ -30,9 +30,21 @@ var moveApp_1 = require("../src/moveApp");
 var buildRun_1 = require("../src/buildRun");
 var init_1 = require("../src/init");
 var emulator_1 = require("../src/emulator");
+var switchGit_1 = require("../src/switchGit");
 var _a = __read(process.argv), _command = _a[2], params = _a.slice(3);
 var command = _command;
-var defaultCommandLog = "No command '" + (command !== null && command !== void 0 ? command : '') + "' found\n\nAvailable commands: \n\nclean\n\t--platform, -p\t\t: ios | android\nconnect\n\t--target, -t\t\t: i.e. wlan0\nenv\nmove\n\t--filename, -f\t\t: i.e. new-app.apk\ninstall\n\tnot maintained\ngradle-update\n\t--type, -t\t\t: dev | prod\nincrement-version\n\t--type, -t\t\t: dev | prod\n\t--platform, -p\t\t: ios | android\n\t[configkey]\t: x | + | 0-9\n\t\te.g. VERSION_NAME: x.x.+";
+// else if (command === 'connect') connectDevice()
+// else if (command === 'emu') runEmulator()
+// else if (command === 'env') envManager()
+// else if (command === 'git-switch') switchGit()
+// else if (command === 'move') moveApp()
+// else if (command === 'install') installApp()
+// else if (command === 'gradle-update') gradleUpdate()
+// else if (command === 'increment-version') incrementVersion()
+// else if (command === 'build') buildRun(true)
+// else if (command === 'run') buildRun()
+// else if (command === 'init') init()
+var defaultCommandLog = "No command '" + (command !== null && command !== void 0 ? command : '') + "' found\n\nAvailable commands: \n\n- init: generate env folder structure\n- emu: run avd with select option\n- git-switch: switch git user with select option\n- clean\n\t--platform, -p\t\t: ios | android\n- connect\n\t--target, -t\t\t: i.e. wlan0\n- env\n- move\n\t--filename, -f\t\t: i.e. new-app.apk\n- install\n\tnot maintained\n- gradle-update\n\t--type, -t\t\t: dev | prod\n- increment-version\n\t--type, -t\t\t: dev | prod\n\t--platform, -p\t\t: ios | android\n\t[configkey]\t: x | + | 0-9\n\t\te.g. VERSION_NAME: x.x.+";
 exports.theParams = params.reduce(function (ret, data) {
     var _a = __read(data.split('=')), key = _a[0], value = _a.slice(1);
     ret[key] = value.join('=');
@@ -98,6 +110,8 @@ function execCommand() {
             (0, emulator_1["default"])();
         else if (command === 'env')
             (0, envManager_1["default"])();
+        else if (command === 'git-switch')
+            (0, switchGit_1["default"])();
         else if (command === 'move')
             (0, moveApp_1["default"])();
         else if (command === 'install')
