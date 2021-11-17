@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 "use strict";
+/// <reference path="../global.d.ts" />
 var __read = (this && this.__read) || function (o, n) {
     var m = typeof Symbol === "function" && o[Symbol.iterator];
     if (!m) return o;
@@ -18,8 +19,8 @@ var __read = (this && this.__read) || function (o, n) {
 };
 exports.__esModule = true;
 exports.thread = exports.prettyConsole = exports.colorize = exports.THE_COMMAND = exports.ROOT_PATH = exports.theParams = void 0;
-/// <reference path="../global.d.ts" />
 var child_process_1 = require("child_process");
+// import { program } from 'commander'
 var cleanProject_1 = require("../src/cleanProject");
 var connectDevice_1 = require("../src/connectDevice");
 var envManager_1 = require("../src/envManager");
@@ -33,17 +34,6 @@ var emulator_1 = require("../src/emulator");
 var switchGit_1 = require("../src/switchGit");
 var _a = __read(process.argv), _command = _a[2], params = _a.slice(3);
 var command = _command;
-// else if (command === 'connect') connectDevice()
-// else if (command === 'emu') runEmulator()
-// else if (command === 'env') envManager()
-// else if (command === 'git-switch') switchGit()
-// else if (command === 'move') moveApp()
-// else if (command === 'install') installApp()
-// else if (command === 'gradle-update') gradleUpdate()
-// else if (command === 'increment-version') incrementVersion()
-// else if (command === 'build') buildRun(true)
-// else if (command === 'run') buildRun()
-// else if (command === 'init') init()
 var defaultCommandLog = "No command '" + (command !== null && command !== void 0 ? command : '') + "' found\n\nAvailable commands: \n\n- init: generate env folder structure\n- emu: run avd with select option\n- git-switch: switch git user with select option\n- clean\n\t--platform, -p\t\t: ios | android\n- connect\n\t--target, -t\t\t: i.e. wlan0\n- env\n- move\n\t--filename, -f\t\t: i.e. new-app.apk\n- install\n\tnot maintained\n- gradle-update\n\t--type, -t\t\t: dev | prod\n- increment-version\n\t--type, -t\t\t: dev | prod\n\t--platform, -p\t\t: ios | android\n\t[configkey]\t: x | + | 0-9\n\t\te.g. VERSION_NAME: x.x.+";
 exports.theParams = params.reduce(function (ret, data) {
     var _a = __read(data.split('=')), key = _a[0], value = _a.slice(1);
@@ -135,3 +125,52 @@ execCommand().then(function (response) {
         console.error(response);
     }
 });
+// program
+// 	.command('clean')
+// 	.action(cleanProject)
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('connect')
+// 	.action(connectDevice)
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('emu')
+// 	.action(runEmulator)
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('env')
+// 	.action(envManager)
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('git-switch')
+// 	.action(switchGit)
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('move')
+// 	.action(moveApp)
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('install')
+// 	.action(installApp)
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('gradle-update')
+// 	.action(gradleUpdate)
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('increment-version')
+// 	.action(incrementVersion)
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('build')
+// 	.action(() => buildRun(true))
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('run')
+// 	.action(buildRun)
+// 	.description('List all the TODO tasks')
+// program
+// 	.command('init')
+// 	.action(init)
+// 	.description('List all the TODO tasks')
+// program.parse()
