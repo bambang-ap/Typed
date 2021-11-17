@@ -94,7 +94,7 @@ function thread(command) {
     return new Promise(function (resolve) {
         console.log(colorize('BgGreen'), command);
         console.log(colorize('FgCyan'), "=== Child process started command `" + command + "` ===");
-        var execCommand = (0, child_process_1.spawn)(command, [], { shell: true, stdio: 'inherit' });
+        var execCommand = child_process_1.spawn(command, [], { shell: true, stdio: 'inherit' });
         execCommand.on('error', resolve);
         execCommand.on('close', function () { return resolve(true); });
     });
@@ -103,29 +103,29 @@ exports.thread = thread;
 function execCommand() {
     return new Promise(function (resolve) {
         if (command === 'clean')
-            (0, cleanProject_1["default"])();
+            cleanProject_1["default"]();
         else if (command === 'connect')
-            (0, connectDevice_1["default"])();
+            connectDevice_1["default"]();
         else if (command === 'emu')
-            (0, emulator_1["default"])();
+            emulator_1["default"]();
         else if (command === 'env')
-            (0, envManager_1["default"])();
+            envManager_1["default"]();
         else if (command === 'git-switch')
-            (0, switchGit_1["default"])();
+            switchGit_1["default"]();
         else if (command === 'move')
-            (0, moveApp_1["default"])();
+            moveApp_1["default"]();
         else if (command === 'install')
-            (0, installApp_1["default"])();
+            installApp_1["default"]();
         else if (command === 'gradle-update')
-            (0, gradleUpdate_1["default"])();
+            gradleUpdate_1["default"]();
         else if (command === 'increment-version')
-            (0, incrementVersion_1["default"])();
+            incrementVersion_1["default"]();
         else if (command === 'build')
-            (0, buildRun_1["default"])(true);
+            buildRun_1["default"](true);
         else if (command === 'run')
-            (0, buildRun_1["default"])();
+            buildRun_1["default"]();
         else if (command === 'init')
-            (0, init_1["default"])();
+            init_1["default"]();
         else
             resolve(defaultCommandLog);
     });

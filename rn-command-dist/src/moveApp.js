@@ -12,7 +12,7 @@ function moveApp() {
     var _b = bin_1.theParams, _filename = _b["--filename"], __filename = _b["-f"];
     var filename = (_a = _filename !== null && _filename !== void 0 ? _filename : __filename) !== null && _a !== void 0 ? _a : projectName + " " + moment().format('YYYY-MM-DD HH-mm-ss') + ".apk";
     console.log(filename);
-    (0, child_process_1.exec)("cp \"" + apkPath + "\" \"./" + outputFolder + "/" + filename + "\"", function (err) {
+    child_process_1.exec("cp \"" + apkPath + "\" \"./" + outputFolder + "/" + filename + "\"", function (err) {
         if (err) {
             console.error(err);
             return;
