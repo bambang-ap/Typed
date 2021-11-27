@@ -83,13 +83,13 @@ function buildRun(isBuild) {
                             _a.label = 2;
                         case 2:
                             if (!(buildType === 'assemble')) return [3 /*break*/, 4];
-                            return [4 /*yield*/, bin_1.thread("cd android; ./gradlew assembleRelease;")];
+                            return [4 /*yield*/, bin_1.thread("cd android; ./gradlew assembleRelease -x bundleReleaseJsAndAssets;")];
                         case 3:
                             _a.sent();
                             return [3 /*break*/, 6];
                         case 4:
                             if (!(buildType === 'bundle')) return [3 /*break*/, 6];
-                            return [4 /*yield*/, bin_1.thread("cd android; ./gradlew bundleRelease;")];
+                            return [4 /*yield*/, bin_1.thread("cd android; ./gradlew bundleRelease -x bundleReleaseJsAndAssets")];
                         case 5:
                             _a.sent();
                             _a.label = 6;
