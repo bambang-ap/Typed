@@ -1,8 +1,8 @@
 # Instalation
 
-using npm `npm i`
+using npm `npm install 'https://gitpkg.now.sh/aprakoso98/Typed/global-methods?master'`
 
-using yarn `yarn add`
+using yarn `yarn add 'https://gitpkg.now.sh/aprakoso98/Typed/global-methods?master'`
 
 # Usage
 

@@ -8,7 +8,7 @@
         "typescript"
     ],
     "author": "aprakoso98",
-    "description": "TypeScript definitions for @types/node-qris",
+    "description": "Primitive methods for javascript",
     "license": "MIT",
     "contributors": [
         {

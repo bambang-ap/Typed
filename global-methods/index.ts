@@ -1,4 +1,4 @@
-/// <reference path="global.d.ts" />
+/// <reference path="index.d.ts" />
 
 import {
   Platform,
