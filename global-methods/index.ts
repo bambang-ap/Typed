@@ -6,7 +6,7 @@ import {
   LayoutAnimation,
   Alert as AlertRN,
 } from 'react-native';
-import {cloneElement, isValidElement} from 'react';
+import { cloneElement, isValidElement } from 'react';
 
 export enum _STATUS_CODE {
   SUCCESS = 200,
@@ -26,19 +26,19 @@ globalThis.prettyConsole = (...objects) => {
 };
 
 globalThis.BGMap = props => {
-  const {backgroundColors, backgroundColor: dColor} = props;
+  const { backgroundColors, backgroundColor: dColor } = props;
   return (
     backgroundColors && dColor ? backgroundColors[dColor] || dColor : dColor
   ) as string;
 };
 
 globalThis.SizeMap = props => {
-  const {sizes, size: dSize} = props;
+  const { sizes, size: dSize } = props;
   return (sizes && dSize ? sizes[dSize as string] || dSize : dSize) as number;
 };
 
 globalThis.FontMap = props => {
-  const {fonts, font: dFont} = props;
+  const { fonts, font: dFont } = props;
   return (fonts && dFont ? fonts[dFont] || dFont : dFont) as string;
 };
 
@@ -50,24 +50,24 @@ globalThis.animate = () => {
 };
 
 globalThis.ColorMap = props => {
-  const {colors, color: dColor} = props;
+  const { colors, color: dColor } = props;
   return (colors && dColor ? colors[dColor] || dColor : dColor) as string;
 };
 
 globalThis.BGMap = props => {
-  const {backgroundColors, backgroundColor: dColor} = props;
+  const { backgroundColors, backgroundColor: dColor } = props;
   return (
     backgroundColors && dColor ? backgroundColors[dColor] || dColor : dColor
   ) as string;
 };
 
 globalThis.SizeMap = props => {
-  const {sizes, size: dSize} = props;
+  const { sizes, size: dSize } = props;
   return (sizes && dSize ? sizes[dSize as string] || dSize : dSize) as number;
 };
 
 globalThis.FontMap = props => {
-  const {fonts, font: dFont} = props;
+  const { fonts, font: dFont } = props;
   return (fonts && dFont ? fonts[dFont] || dFont : dFont) as string;
 };
 
@@ -75,7 +75,7 @@ globalThis.noop = function () {
   return null;
 };
 
-globalThis.noopVoid = function () {};
+globalThis.noopVoid = function () { };
 
 globalThis.Alert = function (message, optionsOrTitle = 'Alert') {
   if (typeof optionsOrTitle === 'string') {
@@ -92,9 +92,9 @@ globalThis.Alert = function (message, optionsOrTitle = 'Alert') {
       message,
       buttons.map(btn => {
         const [text, onPress, style] = btn || [];
-        return {onPress, style, text};
+        return { onPress, style, text };
       }),
-      {cancelable, onDismiss},
+      { cancelable, onDismiss },
     );
   }
 };
@@ -105,7 +105,7 @@ Array.prototype.kMap = function (callback) {
     const isLast = index + 1 === arr.length;
     let cb = callback(data, index, isLast);
     if (isValidElement(cb)) {
-      cb = cloneElement(cb, {key: index.toString()});
+      cb = cloneElement(cb, { key: index.toString() });
     }
     return cb as JSX.Element;
   });
@@ -152,7 +152,7 @@ Number.prototype.ratio = function (ratio) {
   ratio = ratio.replace(/\:/g, '/');
   const height = eval(this.toString());
   const width = height * eval(ratio);
-  return {height, width};
+  return { height, width };
 };
 
 Number.prototype.toAlphabet = function () {
@@ -224,6 +224,18 @@ const caseReplacerFromCamel = function (str: string, separator: '-' | '_') {
     .toLowerCase();
 };
 
+String.prototype.extractNumber = function () {
+  const str = this.toString()
+  try {
+    const matches = str.match(/(-?|-\s+?)\d+/g) || [];
+    if (matches.length > 0)
+      return matches.join('').replace(/\s/g, '').toInt()
+  } catch (e) {
+    return 0
+  }
+  return 0
+}
+
 String.prototype.pascalToSpace = function () {
   return caseReplacerFromPascal(this as string, ' ');
 };
@@ -284,4 +296,4 @@ Math.randomInt = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export {};
+export { };

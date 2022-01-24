@@ -104,6 +104,7 @@ declare global {
   }
 
   interface String {
+    extractNumber(): number
     pascalToSpace(): string;
     kebabToCamel(): string;
     snakeToCamel(): string;
