@@ -6,7 +6,7 @@ import {
   AlertButton as AlertButtonRN,
 } from 'react-native';
 
-import { _STATUS_CODE } from 'global';
+import { _STATUS_CODE } from './index';
 
 type AlertButton = [
   text: string,
@@ -22,7 +22,7 @@ declare module 'react' {
 }
 
 declare global {
-  var STATUS_CODE: _STATUS_CODE;
+  var STATUS_CODE: typeof _STATUS_CODE;
 
   type Noop = typeof noop;
   type NoopVoid = typeof noopVoid;
@@ -72,7 +72,7 @@ declare global {
     T extends string,
     S extends string = '',
     Type = boolean,
-    Separator = '-',
+    Separator extends string = '-',
     > = KeysToCamelCase<Separator, Record<ToString<T, S>, Type>>;
   type ThenArg<T> = T extends PromiseLike<infer U> ? U : T;
   type TheValue<C, S, F> = {

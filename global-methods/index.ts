@@ -15,7 +15,7 @@ export enum _STATUS_CODE {
   INTERNAL_ERROR = 500,
 }
 
-globalThis.STATUS_CODE = _STATUS_CODE;
+globalThis.STATUS_CODE = _STATUS_CODE
 
 globalThis.prettyConsole = (...objects) => {
   objects.map(d =>
@@ -228,8 +228,10 @@ String.prototype.extractNumber = function () {
   const str = this.toString()
   try {
     const matches = str.match(/(-?|-\s+?)\d+/g) || [];
-    if (matches.length > 0)
-      return matches.join('').replace(/\s/g, '').toInt()
+    if (matches.length > 0) {
+      const num = matches.join('').replace(/\s/g, '')
+      return parseInt(num)
+    }
   } catch (e) {
     return 0
   }
